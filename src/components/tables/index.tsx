@@ -120,9 +120,11 @@ function DataTable<T>({
                   {/* ADMIN + REQUESTS → Approve / Reject */}
                   {role === "admin" &&
                   tableType === "requests" &&
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   (row.original as any)?.status === "PENDING" ? (
                     <div className="flex gap-2">
                       <button
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onClick={() => onApprove?.((row.original as any).id)}
                         className="flex items-center gap-1 text-green-600 hover:bg-green-50 px-2 py-1 rounded"
                       >
@@ -130,6 +132,7 @@ function DataTable<T>({
                         Approve
                       </button>
                       <button
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         onClick={() => onReject?.((row.original as any).id)}
                         className="flex items-center gap-1 text-red-600 hover:bg-red-50 px-2 py-1 rounded"
                       >

@@ -24,6 +24,7 @@ export interface Requests {
   parkingSlotId?: string;
   checkIn?: string;
   checkOut?: string;
+  price?: number;
 }
 
 export interface Slots {
@@ -100,14 +101,23 @@ export const requestColumns = (): ColumnDef<Requests>[] => [
       return date.toLocaleString();
     },
   },
+  // {
+  //   accessorKey: "requestedAt",
+  //   header: "Requested date",
+  //   cell: (info) => {
+  //     const value = info.getValue() as string | null;
+  //     if (!value) return "—";
+  //     const date = new Date(value);
+  //     return date.toLocaleString();
+  //   },
+  // },
   {
-    accessorKey: "requestedAt",
-    header: "Requested date",
+    accessorKey: "price",
+    header: "Price", 
     cell: (info) => {
       const value = info.getValue() as string | null;
-      if (!value) return "—";
-      const date = new Date(value);
-      return date.toLocaleString();
+      if (!value) return "Not yet approved";
+      return value ? `${value} frw` : "Not yet assigned";
     },
   },
   {
